@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: muhaiminur_rahman_SE_JAVA
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: ABIR
+Implementation-Vendor-Id: com.muhaiminur.sweetittech
+Build-Jdk: 1.8.0_161
+Implementation-URL: http://projects.spring.io/spring-boot/muhaiminur_r
+ ahman_SE_JAVA/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
