@@ -1,14 +1,14 @@
 package muhaiminur_rahman_SE_JAVA.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 
 public class AssessmentRestController {
-	@GetMapping("/")
-	public String hello() {
-		return "ABIR";
+	@GetMapping("/first")
+	public String index() {
+		return "index";
 		
 	}
 
