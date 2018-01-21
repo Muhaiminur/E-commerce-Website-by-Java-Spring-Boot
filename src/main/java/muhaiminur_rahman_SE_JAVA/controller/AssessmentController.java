@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 
-public class AssessmentRestController {
+public class AssessmentController {
 	@GetMapping("/first")
 	public String index() {
 		return "index";
