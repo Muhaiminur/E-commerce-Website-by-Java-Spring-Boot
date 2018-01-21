@@ -2,6 +2,7 @@ package muhaiminur_rahman_SE_JAVA.service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,9 @@ public class Assesment_service {
 		List<product_info> pinfo= new ArrayList<product_info>();
 		for (product_info product_info : rep.findAll()) {
 			pinfo.add(product_info);
+			//System.out.println("id = " +product_info.getId());
 		}
+		
 		return pinfo;
 	}
 }
