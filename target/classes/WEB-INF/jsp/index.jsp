@@ -19,8 +19,8 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">All the Product</a></li>
       <li><a href="newproduct">New Product</a></li>
-      <li><a href="#">UPDATE</a></li>
-      <li><a href="#">DELETE</a></li>
+      <li><a href="update">UPDATE</a></li>
+      <li><a href="delete">DELETE</a></li>
     </ul>
   </div>
 </nav>
@@ -40,8 +40,8 @@
 			        <th>Product Name</th>
 			        <th>Price</th>
 			        <th>Product Type</th>
-			        <th>Edit</th>
-			        <th>DELETE</th>
+			        <!-- <th>Edit</th>
+			        <th>DELETE</th> -->
 			      </tr>
 			    </thead>
 			    <tbody>
@@ -51,9 +51,10 @@
 					        <td>${product.p_name}</td>
 					        <td>${product.p_price}</td>
 					        <td>${product.p_type}</td>
-					        <td><a href="update?id=${product.getId()}"><div class="glyphicon glyphicon-pencil"></div></a></td>
-					        <td><a href="delete?id=${product.getId()}"><div class="glyphicon glyphicon-remove"></div></a></td>
-					    </tr>
+					        <%-- <td><a href="update?id=${product.getId()}"><div class="glyphicon glyphicon-pencil"></div></a></td>
+					        <td><a href="delete_with_id?id=${product.getId()}"><div class="glyphicon glyphicon-remove"></div></a></td>
+					     --%>
+					     </tr>
 					</c:forEach>
 			      	
 			    </tbody>
@@ -102,7 +103,57 @@
 			  <button type="submit" class="btn btn-default">SUBMIT</button>
 		</form>
 	</c:when>
+	<c:when test="${mode=='DELETE_VIEW'}">
+		<table class="table table-striped">
+			    <thead>
+			      <tr>
+			        <th>SL</th>
+			        <th>Product Name</th>
+			        <th>Price</th>
+			        <th>Product Type</th>
+			        <th>DELETE</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      	<c:forEach var="product" items="${products}" >
+					    <tr>
+					        <td>${product.getId()}</td>
+					        <td>${product.p_name}</td>
+					        <td>${product.p_price}</td>
+					        <td>${product.p_type}</td>
+					        <td><a href="delete_with_id?id=${product.getId()}"><div class="glyphicon glyphicon-remove"></div></a></td>
+					    </tr>
+					</c:forEach>
+			      	
+			    </tbody>
+			  </table>
+	</c:when>
 	
+	<c:when test="${mode=='UPDATE_VIEW'}">
+		<table class="table table-striped">
+			    <thead>
+			      <tr>
+			        <th>SL</th>
+			        <th>Product Name</th>
+			        <th>Price</th>
+			        <th>Product Type</th>
+			        <th>UPDATE</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      	<c:forEach var="product" items="${products}" >
+					    <tr>
+					        <td>${product.getId()}</td>
+					        <td>${product.p_name}</td>
+					        <td>${product.p_price}</td>
+					        <td>${product.p_type}</td>
+					        <td><a href="update_with_id?id=${product.getId()}"><div class="glyphicon glyphicon-pencil"></div></a></td>
+					    </tr>
+					</c:forEach>
+			      	
+			    </tbody>
+			  </table>
+	</c:when>
 	
   </c:choose>
 </div>

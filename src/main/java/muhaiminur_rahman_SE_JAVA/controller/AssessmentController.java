@@ -42,9 +42,17 @@ public class AssessmentController {
 		return "index";
 		
 	}
+	//view with update page
+	@GetMapping("/update")
+	public String update_view(HttpServletRequest req) {
+		req.setAttribute("products", as.findallproduct() );
+		req.setAttribute("mode", "UPDATE_VIEW" );
+		return "index";
+	}
+	
 	
 	//for update/edit the info
-	@GetMapping("/update")
+	@GetMapping("/update_with_id")
 	public String update_info(@RequestParam int id,HttpServletRequest req) {
 		req.setAttribute("products", arc.findoneok(id) );
 		req.setAttribute("mode", "PRODUCT_EDIT" );
@@ -71,8 +79,17 @@ public class AssessmentController {
 		return "index";
 	}
 	
+	
+	//view the delete page
+		@GetMapping("/delete")
+		public String delete_view(HttpServletRequest req) {
+			req.setAttribute("products", as.findallproduct() );
+			req.setAttribute("mode", "DELETE_VIEW" );
+			return "index";
+		}
+	
 	//for delete the info
-	@GetMapping("/delete")
+	@GetMapping("/delete_with_id")
 	public void deleteproduct(@RequestParam int id,HttpServletRequest req,HttpServletResponse resp) throws IOException{
 		
 		arc.delete_product(id);
