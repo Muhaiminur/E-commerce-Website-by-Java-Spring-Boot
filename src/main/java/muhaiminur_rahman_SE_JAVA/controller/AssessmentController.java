@@ -1,13 +1,20 @@
 package muhaiminur_rahman_SE_JAVA.controller;
 
+import java.io.IOException;
 import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import muhaiminur_rahman_SE_JAVA.controller.rest.Assessment_Rest_Controller;
 import muhaiminur_rahman_SE_JAVA.doa.Assessment_epository;
 import muhaiminur_rahman_SE_JAVA.models.product_info;
 import muhaiminur_rahman_SE_JAVA.service.Assesment_service;
@@ -23,18 +30,55 @@ public class AssessmentController {
 	@Autowired
 	Assesment_service as;
 	
+	@Autowired
+	Assessment_Rest_Controller arc;
+	
+	
+	//default page view
 	@GetMapping("/")
 	public String init(HttpServletRequest req) {
-		for (Iterator iterator = as.findallproduct().iterator(); iterator.hasNext();) {
-			product_info product_info = (product_info) iterator.next();
-			System.out.println("id = " +product_info.getP_name());
-			
-		}
 		req.setAttribute("products", as.findallproduct() );
+		req.setAttribute("mode", "VIEW_ALL" );
 		return "index";
 		
 	}
 	
+	//for update/edit the info
+	@GetMapping("/update")
+	public String update_info(@RequestParam int id,HttpServletRequest req) {
+		req.setAttribute("products", arc.findoneok(id) );
+		req.setAttribute("mode", "PRODUCT_EDIT" );
+		return "index";
+		
+	}
+	
+	
+	//for save the database
+	@PostMapping("/save")
+	public void save(@ModelAttribute product_info p,HttpServletRequest req,HttpServletResponse resp) throws IOException{
+		rp.save(p);
+		req.setAttribute("products", as.findallproduct() );
+		req.setAttribute("mode", "VIEW_ALL" );
+		
+		resp.sendRedirect("/");
+	}
+	
+	//getting new product
+	@GetMapping("/newproduct")
+	public String newproduct(HttpServletRequest req) {
+		
+		req.setAttribute("mode", "NEW_PRODUCT" );
+		return "index";
+	}
+	
+	//for delete the info
+	@GetMapping("/delete")
+	public void deleteproduct(@RequestParam int id,HttpServletRequest req,HttpServletResponse resp) throws IOException{
+		
+		arc.delete_product(id);
+		resp.sendRedirect("/");
+	}
+	//raw test
 	@GetMapping("/first")
 	public String index() {
 		return "index";

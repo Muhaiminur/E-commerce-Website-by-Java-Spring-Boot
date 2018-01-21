@@ -33,6 +33,10 @@ public class Assessment_Rest_Controller {
 	public void delete_product(@RequestParam int id) {
 		rp.delete(id);
 	}
+	
+	public product_info findoneok(int id) {
+		return rp.findOne(id);
+	}
 
 
 }
