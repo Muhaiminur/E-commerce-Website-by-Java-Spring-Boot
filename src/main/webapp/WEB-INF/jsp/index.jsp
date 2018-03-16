@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%@ taglib  uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="en">
 <head>
   <title>Muhaiminur Rahman_SE_JAVA</title>
@@ -14,10 +14,10 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Assessment</a>
+      <a class="navbar-brand" href="/">Assessment</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">All the Product</a></li>
+      <li class="active"><a href="/">All the Product</a></li>
       <li><a href="newproduct">New Product</a></li>
       <li><a href="update">UPDATE</a></li>
       <li><a href="delete">DELETE</a></li>
