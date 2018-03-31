@@ -101,5 +101,21 @@ public class AssessmentController {
 		return "index";
 		
 	}
+	//user view
+		@GetMapping("/user_view")
+		public String user_view(HttpServletRequest req) {
+			req.setAttribute("products", as.findallproduct() );
+			req.setAttribute("mode", "USER_VIEW" );
+			return "index";
+			
+		}
+	//Login page
+		@GetMapping("/login")
+		public String login(HttpServletRequest req) {
+			req.setAttribute("products", as.findallproduct() );
+			req.setAttribute("mode", "LOGIN" );
+			return "index";
+			
+		}
 
 }
